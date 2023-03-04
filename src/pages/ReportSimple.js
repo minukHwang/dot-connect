@@ -3,7 +3,7 @@ import "./ReportSimple.scss";
 
 const ReportSimple = () => {
   return (
-    <div>
+    <div className="simple">
       <div className="main-title">신고</div>
       <div className="place-area">
         <div className="sub-title">위치</div>

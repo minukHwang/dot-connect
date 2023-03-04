@@ -1,0 +1,128 @@
+.title-box {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 16px 36px;
+    gap: 16px;
+
+    .title-text {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .sub-text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: rgba(34, 34, 34, 0.5);
+    }
+}
+
+.detail {
+    .main-title {
+        padding: 16px 20px;
+        margin-bottom: 28px;
+        font-size: 40px;
+        font-weight: 600;
+    }
+
+    .sub-title {
+        padding: 0px 16px;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 12px;
+    }
+
+    .place-area {
+        margin-bottom: 36px;
+
+        .place-btn-area {
+            padding: 0 16px;
+            margin-bottom: 12px;
+
+            .place-btn {
+                display: flex;
+                justify-content: space-between;
+                padding: 9px 10px;
+                background-color: #ffffff;
+                border: 1px solid rgba(34, 34, 34, 0.15);
+                border-radius: 4px;
+                color: rgba($color: #222222, $alpha: 0.7);
+
+                .place-text {
+                    display: inline-block;
+                    width: 360px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-size: 14px;
+                    line-height: 24px;
+                }
+            }
+        }
+
+        .place-input-area {
+            padding: 0 16px;
+            display: flex;
+
+            .place-input {
+                flex: 1 1 0;
+                padding: 9px 10px;
+                font-size: 14px;
+                line-height: 24px;
+                border-radius: 4px;
+                border: 0.5px solid rgba(34, 34, 34, 0.15);
+                background-color: #f4f4f4;
+
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .text-area {
+        .text-box-area {
+            padding: 0 16px;
+            display: flex;
+
+            .text-box {
+                padding: 9px 10px;
+                font-size: 18px;
+                flex: 1 1 0;
+                border: none;
+                border-radius: 4px;
+                border: 0.5px solid rgba(34, 34, 34, 0.15);
+                font-size: 14px;
+                line-height: 22px;
+                background-color: #f4f4f4;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .btn-area {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0px 16px 24px;
+
+        .btn {
+            border: none;
+            flex: 1 1 0;
+            background-color: #222222;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 20px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+    }
+}
