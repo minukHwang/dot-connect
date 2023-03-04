@@ -1,94 +1,99 @@
 .main-title {
-    padding: 16px 20px;
-    margin-bottom: 28px;
-    font-size: 40px;
-    font-weight: 600;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 .sub-title {
-    padding: 0px 20px;
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 12px;
+  padding: 0px 20px;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
 .place-area {
-    margin-bottom: 36px;
+  margin-bottom: 36px;
 
-    .place-btn-area {
-        padding: 0 20px;
-        margin-bottom: 12px;
+  .place-btn-area {
+    padding: 0 20px;
+    margin-bottom: 12px;
 
-        .place-btn {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 16px;
-            background-color: #ffffff;
-            border: 1px solid rgba(34, 34, 34, 0.15);
-            border-radius: 4px;
-            color: rgba($color: #222222, $alpha: 0.7);
+    .place-btn {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background-color: #ffffff;
+      border: 1px solid rgba(34, 34, 34, 0.15);
+      border-radius: 4px;
+      color: rgba($color: #222222, $alpha: 0.7);
 
-            .place-text {
-                font-size: 18px;
-            }
-        }
+      .place-text {
+        display: inline-block;
+        width: 360px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 18px;
+      }
     }
+  }
 
-    .place-input-area {
-        padding: 0 20px;
-        display: flex;
+  .place-input-area {
+    padding: 0 20px;
+    display: flex;
 
-        .place-input {
-            flex: 1 1 0;
-            padding: 12px 16px;
-            font-size: 18px;
-            border-radius: 4px;
-            border: none;
-            background-color: #f4f4f4;
+    .place-input {
+      flex: 1 1 0;
+      padding: 12px 16px;
+      font-size: 18px;
+      border-radius: 4px;
+      border: none;
+      background-color: #f4f4f4;
 
-            &:focus {
-                outline: none;
-            }
-        }
+      &:focus {
+        outline: none;
+      }
     }
+  }
 }
 
 .text-area {
-    .text-box-area {
-        padding: 0 20px;
-        display: flex;
+  .text-box-area {
+    padding: 0 20px;
+    display: flex;
 
-        .text-box {
-            padding: 16px;
-            font-size: 18px;
-            flex: 1 1 0;
-            border: none;
-            border-radius: 4px;
-            background-color: #f4f4f4;
+    .text-box {
+      padding: 16px;
+      font-size: 18px;
+      flex: 1 1 0;
+      border: none;
+      border-radius: 4px;
+      background-color: #f4f4f4;
 
-            &:focus {
-                outline: none;
-            }
-        }
+      &:focus {
+        outline: none;
+      }
     }
+  }
 }
 
 .btn-area {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0px 16px 24px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0px 16px 24px;
 
-    .btn {
-        border: none;
-        flex: 1 1 0;
-        background-color: #222222;
-        color: #ffffff;
-        font-size: 20px;
-        line-height: 24px;
-        padding: 16px 16px 18px;
-        border-radius: 4px;
-    }
+  .btn {
+    border: none;
+    flex: 1 1 0;
+    background-color: #222222;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 16px 16px 18px;
+    border-radius: 4px;
+  }
 }
