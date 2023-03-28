@@ -16,7 +16,7 @@ const ReportDetail = () => {
         <div className="sub-title">Picture</div>
         <div className="picture-btn-area">
           <div className="picture-add">
-            <span class="material-symbols-outlined">photo_camera</span>
+            <span className="material-symbols-outlined">photo_camera</span>
           </div>
         </div>
       </div>

@@ -7,9 +7,21 @@ const ReportSimple = () => {
   // const [location, setLocation] = useState("");
   // const [picture, setPicture] = useState("");
   // const [text, setText] = useState("");
+
+  // let axiosConfig = {
+  //   headers: {
+  //       'Content-Type': 'application/json;charset=UTF-8',
+  //       "Access-Control-Allow-Origin": "*",
+  //   }
+  // };
+
+  const headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+    Accept: "application/json",
+  };
+
   const [values, setValues] = useState({
     content: "",
-    id: "",
     image: "",
     location: "",
   });
@@ -30,10 +42,39 @@ const ReportSimple = () => {
 
   const register = () => {
     console.log(values);
-    axios.post(
-      "https://dot-connect-374203.du.r.appspot.com/reports/upload",
-      values
-    );
+    axios
+      .post(
+        "https://dot-connect-374203.du.r.appspot.com/reports/upload",
+        values,
+        { headers }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        if (error) {
+          // 404 에러가 발생한 경우
+
+          console.log(error);
+        } else {
+          // unexpected 에러가 발생한 경우
+
+          console.log("나도몰라");
+        }
+      });
+    // axios
+    //   .get("https://dot-connect-374203.du.r.appspot.com/reports/upload")
+    //   .then(function (response) {
+    //     // 성공한 경우 실행
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     // 에러인 경우 실행
+    //     console.log(error);
+    //   })
+    //   .then(function () {
+    //     // 항상 실행
+    //   });
   };
 
   return (
