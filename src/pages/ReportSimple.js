@@ -90,16 +90,11 @@ const ReportSimple = () => {
               placeSearch();
             }}
           >
-            <div className="place-text">Find Location</div>
-            <span className="material-symbols-outlined">arrow_forward_ios</span>
+            Search Location
           </div>
-        </div>
-        <div className="place-input-area">
-          <input
-            type="text"
-            className="place-input"
-            placeholder="Please enter detail of location."
-          />
+          <div className="current-location">
+            <span class="material-symbols-outlined">my_location</span>
+          </div>
         </div>
       </div>
 

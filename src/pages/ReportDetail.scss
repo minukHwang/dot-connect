@@ -57,25 +57,31 @@
         .place-btn-area {
             padding: 0 16px;
             margin-bottom: 12px;
+            display: flex;
 
             .place-btn {
                 display: flex;
-                justify-content: space-between;
+                align-items: center;
+                flex: 1 1 0;
                 padding: 9px 10px;
                 background-color: #ffffff;
                 border: 1px solid rgba(34, 34, 34, 0.15);
                 border-radius: 4px;
                 color: rgba($color: #222222, $alpha: 0.7);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 14px;
+                line-height: 24px;
+            }
 
-                .place-text {
-                    display: inline-block;
-                    width: 360px;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    font-size: 14px;
-                    line-height: 24px;
-                }
+            .current-location {
+                margin-left: 6px;
+                background-color: #222222;
+                color: #ffffff;
+                border-radius: 4px;
+                display: flex;
+                padding: 10px;
             }
         }
 

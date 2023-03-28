@@ -24,17 +24,12 @@ const ReportDetail = () => {
       <div className="place-area">
         <div className="sub-title">Location</div>
         <div className="place-btn-area">
-          <div className="place-btn">
-            <div className="place-text">Find Location</div>
-            <span className="material-symbols-outlined">arrow_forward_ios</span>
+          <div className="place-btn" onClick={() => {}}>
+            Search Location
           </div>
-        </div>
-        <div className="place-input-area">
-          <input
-            type="text"
-            className="place-input"
-            placeholder="Please enter detail of location."
-          />
+          <div className="current-location">
+            <span class="material-symbols-outlined">my_location</span>
+          </div>
         </div>
       </div>
 
