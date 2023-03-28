@@ -62,6 +62,7 @@ const ReportSimple = () => {
           console.log("나도몰라");
         }
       });
+    alert("Report has been submitted");
     // axios
     //   .get("https://dot-connect-374203.du.r.appspot.com/reports/upload")
     //   .then(function (response) {
