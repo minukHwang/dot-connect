@@ -37,6 +37,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           font-size: 18px;
+
         }
       }
     }
@@ -55,6 +56,10 @@
 
         &:focus {
           outline: none;
+        }
+
+        &::placeholder {
+          color: rgba($color: #222222, $alpha: 0.3);
         }
       }
     }
@@ -77,6 +82,10 @@
 
         &:focus {
           outline: none;
+        }
+
+        &::placeholder {
+          color: rgba($color: #222222, $alpha: 0.3);
         }
       }
     }

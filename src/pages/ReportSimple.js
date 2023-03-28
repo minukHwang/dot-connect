@@ -1,18 +1,53 @@
 import React from "react";
 import "./ReportSimple.scss";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const ReportSimple = () => {
+  // const [location, setLocation] = useState("");
+  // const [picture, setPicture] = useState("");
+  // const [text, setText] = useState("");
+  const [values, setValues] = useState({
+    content: "",
+    id: "",
+    image: "",
+    location: "",
+  });
+
+  const inputText = (event) => {
+    setValues({
+      ...values,
+      content: event.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(values);
+  };
+
+  const placeSearch = () => {};
+
   const register = () => {
-    console.log("click");
+    console.log(values);
+    axios.post(
+      "https://dot-connect-374203.du.r.appspot.com/reports/upload",
+      values
+    );
   };
 
   return (
-    <div className="simple">
+    <form className="simple" onSubmit={handleSubmit}>
       <div className="main-title">Report</div>
       <div className="place-area">
         <div className="sub-title">Location</div>
         <div className="place-btn-area">
-          <div className="place-btn">
+          <div
+            className="place-btn"
+            onClick={() => {
+              placeSearch();
+            }}
+          >
             <div className="place-text">Find Location</div>
             <span className="material-symbols-outlined">arrow_forward_ios</span>
           </div>
@@ -33,13 +68,15 @@ const ReportSimple = () => {
             className="text-box"
             cols="30"
             rows="10"
-            placeholder="Please enter the contents of the report."
+            placeholder="Please enter contents of report."
+            onChange={(event) => inputText(event)}
           ></textarea>
         </div>
       </div>
 
       <div className="btn-area">
         <button
+          type="submit"
           className="btn"
           onClick={() => {
             register();
@@ -48,7 +85,7 @@ const ReportSimple = () => {
           Submit
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
