@@ -11,12 +11,22 @@ const ReportDetail = () => {
           gravida aenean sem ac.
         </div>
       </div>
+
+      <div className="picture-area">
+        <div className="sub-title">사진</div>
+        <div className="picture-btn-area">
+          <div className="picture-add">
+            <span class="material-symbols-outlined">photo_camera</span>
+          </div>
+        </div>
+      </div>
+
       <div className="place-area">
         <div className="sub-title">위치</div>
         <div className="place-btn-area">
           <div className="place-btn">
             <div className="place-text">서울특별시 서대문구 연세로5가길 16</div>
-            <span class="material-symbols-outlined">arrow_forward_ios</span>
+            <span className="material-symbols-outlined">arrow_forward_ios</span>
           </div>
         </div>
         <div className="place-input-area">
