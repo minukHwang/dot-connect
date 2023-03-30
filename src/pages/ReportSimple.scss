@@ -38,6 +38,7 @@
       }
 
       .current-location {
+        cursor: pointer;
         margin-left: 8px;
         background-color: #222222;
         color: #ffffff;
@@ -105,6 +106,7 @@
     padding: 0px 16px 24px;
 
     .btn {
+      cursor: pointer;
       border: none;
       flex: 1 1 0;
       background-color: #222222;

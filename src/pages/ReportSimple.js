@@ -1,31 +1,41 @@
 import React from "react";
 import "./ReportSimple.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
+const apiKey = process.env.REACT_APP_GMAP_API_KEY;
+const mapApiJs = "https://maps.googleapis.com/maps/api/js";
+const geocodeJson = "https://maps.googleapis.com/maps/api/geocode/json";
+
 const ReportSimple = () => {
-  // const [location, setLocation] = useState("");
-  // const [picture, setPicture] = useState("");
-  // const [text, setText] = useState("");
+  //load api
+  const loadAsyncScript = (src) => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      Object.assign(script, {
+        type: "text/javascript",
+        async: true,
+        src,
+      });
+      script.addEventListener("load", () => resolve(script));
+      document.head.appendChild(script);
+    });
+  };
 
-  // let axiosConfig = {
-  //   headers: {
-  //       'Content-Type': 'application/json;charset=UTF-8',
-  //       "Access-Control-Allow-Origin": "*",
-  //   }
-  // };
-
+  //Connecting Server API
   const headers = {
     "Content-Type": "application/x-www-form-urlencoded",
     Accept: "application/json",
   };
 
+  //Values
   const [values, setValues] = useState({
+    latitude: "",
+    longtitude: "",
     content: "",
-    image: "",
-    location: "",
   });
 
+  //Text
   const inputText = (event) => {
     setValues({
       ...values,
@@ -33,15 +43,79 @@ const ReportSimple = () => {
     });
   };
 
+  //Submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
+  };
+  const searchInput = useRef(null);
+  const textInput = useRef(null);
+
+  // init Google Map
+  const initMapScript = () => {
+    if (window.google) {
+      return Promise.resolve();
+    }
+    const src = `${mapApiJs}?key=${apiKey}&libraries=places&v=weekly`;
+    return loadAsyncScript(src);
   };
 
-  const placeSearch = () => {};
+  // do something on address change
+  const onChangeAddress = (autocomplete) => {
+    const place = autocomplete.getPlace();
+    const lat = place.geometry.location.lat();
+    const lng = place.geometry.location.lng();
+    setValues({
+      ...values,
+      latitude: lat,
+      longtitude: lng,
+    });
+  };
+
+  // init autocomplete
+  const initAutocomplete = () => {
+    if (!searchInput.current) return;
+
+    const autocomplete = new window.google.maps.places.Autocomplete(
+      searchInput.current
+    );
+    autocomplete.setFields(["address_component", "geometry"]);
+    autocomplete.addListener("place_changed", () =>
+      onChangeAddress(autocomplete)
+    );
+  };
+
+  const reverseGeocode = ({ latitude: lat, longitude: lng }) => {
+    const url = `${geocodeJson}?key=${apiKey}&latlng=${lat},${lng}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((location) => {
+        const place = location.results[0];
+        searchInput.current.value = place.formatted_address;
+        setValues({
+          ...values,
+          latitude: lat,
+          longtitude: lng,
+        });
+      });
+  };
+
+  const findMyLocation = () => {
+    searchInput.current.value = "";
+    searchInput.current.placeholder = "Searching your location...";
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        reverseGeocode(position.coords);
+      });
+    }
+  };
+
+  // load map script after mounted
+  useEffect(() => {
+    initMapScript().then(() => initAutocomplete());
+  }, []);
 
   const register = () => {
-    console.log(values);
+    console.log(typeof values.latitude);
     axios
       .post(
         "https://dot-connect-374203.du.r.appspot.com/reports/upload",
@@ -63,19 +137,8 @@ const ReportSimple = () => {
         }
       });
     alert("Report has been submitted");
-    // axios
-    //   .get("https://dot-connect-374203.du.r.appspot.com/reports/upload")
-    //   .then(function (response) {
-    //     // 성공한 경우 실행
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     // 에러인 경우 실행
-    //     console.log(error);
-    //   })
-    //   .then(function () {
-    //     // 항상 실행
-    //   });
+    textInput.current.value = "";
+    searchInput.current.value = "";
   };
 
   return (
@@ -84,16 +147,14 @@ const ReportSimple = () => {
       <div className="place-area">
         <div className="sub-title">Location</div>
         <div className="place-btn-area">
-          <div
+          <input
+            ref={searchInput}
+            type="text"
             className="place-btn"
-            onClick={() => {
-              placeSearch();
-            }}
-          >
-            Search Location
-          </div>
-          <div className="current-location">
-            <span class="material-symbols-outlined">my_location</span>
+            placeholder="Search Location"
+          />
+          <div className="current-location" onClick={findMyLocation}>
+            <span className="material-symbols-outlined">my_location</span>
           </div>
         </div>
       </div>
@@ -102,6 +163,7 @@ const ReportSimple = () => {
         <div className="sub-title">Report Detail</div>
         <div className="text-box-area">
           <textarea
+            ref={textInput}
             className="text-box"
             cols="30"
             rows="10"
